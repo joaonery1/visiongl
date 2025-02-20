@@ -299,7 +299,7 @@ void vglClInit()
 {
     cl_int err;
     cl_uint num_platforms, num_devices;
-    cl_device_type device_type = CL_DEVICE_TYPE_CPU;
+    cl_device_type device_type = CL_DEVICE_TYPE_GPU;
     cl_uint id = 0;
     cl_uint plat;
     err = clGetPlatformIDs(0, NULL, &num_platforms);
