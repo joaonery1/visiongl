@@ -156,7 +156,7 @@ int main(int argc, char* argv[])
 
     // Conv 51x1
     VglImage* conv_51x1 = vglCreateImage(img);
-    vglClConvolution(conv_1x51, conv_51x1 , (float*) kernelData151, 1, 51);
+    vglClConvolution(conv_1x51, conv_51x1 , (float*) kernelData151, 51, 1);
     printf("Convolution 1x51 done\n");
     vglCheckContext(conv_51x1, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_conv511.tif");
