@@ -110,6 +110,11 @@ void vglClMax(VglImage* img_input1, VglImage* img_input2, VglImage* img_output);
   */
 void vglClMin(VglImage* img_input1, VglImage* img_input2, VglImage* img_output);
 
+/** Convert from RGB to grayscale.
+
+  */
+void vglClRgb2Gray(VglImage* img_input, VglImage* img_output);
+
 /** Direct copy from src to dst.
 
   */

@@ -64,6 +64,26 @@ int main(int argc, char* argv[])
     };
 
 
+    float kernelData1717[17][17] = {
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
+        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f}
+    };
+
 
 
     // if (argc != 4)
@@ -101,7 +121,6 @@ int main(int argc, char* argv[])
             vglIpl3To4Channels(img);
         }
     }
-    printf("oiii");
     img->vglShape->print();
     iplPrintImageInfo(img->ipl);
 
@@ -113,25 +132,29 @@ int main(int argc, char* argv[])
         printf("%s", str.c_str());
     }
 
-    printf("CREATING COPY\n");
-    VglImage* out = vglCreateImage(img);
+ 
+
+    // Gray
     VglImage* gray = vglCreateImage(img);
-
-    gray->ipl = cvCreateImage(cvGetSize(gray->ipl),IPL_DEPTH_8U,1);
-
-    cvCvtColor(img->ipl, gray->ipl, CV_BGRA2GRAY);
+    vglClRgb2Gray(img, gray);
+    printf("Gray done\n");
     vglCheckContext(gray, VGL_RAM_CONTEXT);
-    sprintf(outFilename, "%s%s", outPath, "/out_demo_gray.tif");
+    sprintf(outFilename, "%s%s", outPath, "/out_cl_gray.tif");
     cvSaveImage(outFilename, gray->ipl);
+    gray->vglShape->print();
+    iplPrintImageInfo(gray->ipl);
 
-
-    VglImage* conv_1x51 = vglCreateImage(img);
-    vglClConvolution(img, conv_1x51 , (float*) kernelData151, 1, 51);
+    // Conv 1x51
+    VglImage* conv_1x51 = vglCreateImage(gray);
+    vglClConvolution(gray, conv_1x51 , (float*) kernelData151, 1, 51);
     printf("Convolution 1x51 done\n");
     vglCheckContext(conv_1x51, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_conv151.tif");
     cvSaveImage(outFilename, conv_1x51->ipl);
+    conv_1x51->vglShape->print();
+    iplPrintImageInfo(conv_1x51->ipl);
 
+    // Conv 51x1
     VglImage* conv_51x1 = vglCreateImage(img);
     vglClConvolution(conv_1x51, conv_51x1 , (float*) kernelData151, 1, 51);
     printf("Convolution 1x51 done\n");
@@ -140,6 +163,7 @@ int main(int argc, char* argv[])
     cvSaveImage(outFilename, conv_51x1->ipl);
 
 
+    // Dilate 1x51
     VglImage* dil_1x51 = vglCreateImage(img);
     vglClDilate(conv_51x1, dil_1x51, (float*) kernel151, 1, 51);
     printf("Dilate 1x51 done\n");
@@ -148,6 +172,7 @@ int main(int argc, char* argv[])
     cvSaveImage(outFilename, dil_1x51->ipl);
 
 
+    // Dilate 51x1
     VglImage* dil_51x1 = vglCreateImage(img);
     vglClDilate(dil_1x51, dil_51x1, (float*) kernel511, 51, 1);
     printf("Dilate 51x1 done\n");
@@ -155,6 +180,8 @@ int main(int argc, char* argv[])
     sprintf(outFilename, "%s%s", outPath, "/out_cl_dil511.tif");
     cvSaveImage(outFilename, dil_51x1->ipl);
 
+
+    // Erode 1x51
     VglImage* ero_1x51 = vglCreateImage(img);
     vglClErode(dil_51x1, ero_1x51, (float*) kernel151, 1, 51);
     printf("Erode 1x51 done\n");
@@ -162,6 +189,8 @@ int main(int argc, char* argv[])
     sprintf(outFilename, "%s%s", outPath, "/out_cl_ero151.tif");
     cvSaveImage(outFilename, ero_1x51->ipl);
 
+
+    // Erode 51x1
     VglImage* ero_51x1 = vglCreateImage(img);
     vglClErode(ero_1x51, ero_51x1, (float*) kernel511, 51, 1);
     printf("Erode 51x1 done\n");
@@ -169,6 +198,8 @@ int main(int argc, char* argv[])
     sprintf(outFilename, "%s%s", outPath, "/out_cl_ero511.tif");
     cvSaveImage(outFilename, ero_51x1->ipl);
 
+
+    // Sub
     VglImage* sub = vglCreateImage(img);
     vglClSub(ero_51x1, conv_51x1, sub);
     printf("Sub done\n");
@@ -177,6 +208,7 @@ int main(int argc, char* argv[])
     cvSaveImage(outFilename, sub->ipl);
 
 
+    // Threshold
     VglImage* thresh = vglCreateImage(img);
     vglClThreshold(sub, thresh, 0.00784);
     printf("Threshold done\n");
@@ -185,34 +217,14 @@ int main(int argc, char* argv[])
     cvSaveImage(outFilename, thresh->ipl);
 
 
-    float kernelData1717[17][17] = {
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f},
-        {1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f}
-    };
 
-
+    // Rec
     VglImage* erod = vglCreateImage(img);
     VglImage* buffer = vglCreateImage(img);
     VglImage* buffer1 = vglCreateImage(img);
     VglImage* rec = vglCreateImage(img);
 
     vglClErode(thresh, erod, (float*) kernelData1717, 17, 17);
-    // vglCheckContext(thresh, VGL_RAM_CONTEXT);
     printf("Erode done\n");
     // vglClConditionalDilate(erod, rec, buffer, (float*) kernelData1717, 17, 17);
     vglClReconstructionByDilation(erod, buffer, rec, buffer1, (float*) kernelData1717, 17, 17);
@@ -226,74 +238,7 @@ int main(int argc, char* argv[])
 
 
 
-
-    // vglClFlush();
-    // printf("First call to          Convolution 1x51:         %s\n", getTimeElapsedInSeconds());
-
-    // //Total time spent on n operations Convolution 3x3
-    // int p = 0;
-    // TimerStart();
-    // auto start = std::chrono::high_resolution_clock::now();
-    // while (p < nSteps)
-    // {
-    //     p++;
-    //     vglClConvolution(img, out, (float*) kernelData151, 1, 51);
-    // }
-    // vglClFlush();
-    // printf("Time spent on %8d Convolution 1x51:         %s \n", nSteps, getTimeElapsedInSeconds());
-    // auto end = std::chrono::high_resolution_clock::now();
-    // std::chrono::duration<double> duration = end - start;
-
-    // std::cout << "Time for convolution: " << duration.count() * 1000 << " ms" << std::endl;
-
-    // vglCheckContext(out, VGL_RAM_CONTEXT);
-    // sprintf(outFilename, "%s%s", outPath, "/out_cl_conv151.tif");
-    // cvSaveImage(outFilename, out->ipl);
-
     
-
-
-
-
-    // //Total time spent on n operations Convolution 5x5
-    // p = 0;
-    // TimerStart();
-    // while (p < nSteps)
-    // {
-    //     p++;
-    //     vglClConvolution(img, out, (float*) kernel55, 5, 5);
-    // }
-    // vglClFlush();
-    // printf("Time spent on %8d Convolution 5x5:         %s\n", nSteps, getTimeElapsedInSeconds());
-
-    // vglCheckContext(out, VGL_RAM_CONTEXT);
-    // sprintf(outFilename, "%s%s", outPath, "/out_cl_conv55.tif");
-    // cvSaveImage(outFilename, out->ipl);
-
-    // //First call to Erode 3x3
-    // float erodeMask[9] = { 0, 1, 0, 1, 1, 1, 0, 1, 0 };
-    // TimerStart();
-    // vglClErode(img, out, erodeMask, 3, 3);
-    // vglClFlush();
-    // printf("First call to          Erode 3x3:               %s \n", getTimeElapsedInSeconds());
-    // //Total time spent on n operations Erode 3x3
-    // p = 0;
-    // TimerStart();
-    // while (p < nSteps)
-    // {
-    //     p++;
-    //     vglClErode(img, out, erodeMask, 3, 3);
-    // }
-    // vglClFlush();
-    // printf("Time spent on %8d Erode 3x3:               %s\n", nSteps, getTimeElapsedInSeconds());
-
-    // vglCheckContext(out, VGL_RAM_CONTEXT);
-    // sprintf(outFilename, "%s%s", outPath, "/out_cl_erosion.tif");
-    // cvSaveImage(outFilename, out->ipl);
-
-
-
-    //flush
     vglClFlush();
     return 0;
 
