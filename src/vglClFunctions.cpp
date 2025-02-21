@@ -898,7 +898,7 @@ bool vglClEqual(VglImage* input1, VglImage* input2, const char* kernel_name)
   static cl_program program = NULL;
   if (program == NULL)
   {
-    char* file_path = (char*) "CL_UTIL/vglClEqual.cl";
+    char* file_path = (char*) "/home/joao/Documents/TCC_1/visiongl/src/CL_UTIL/vglClEqual.cl";
     printf("Compiling %s\n", file_path);
     std::ifstream file(file_path);
     if(file.fail())
