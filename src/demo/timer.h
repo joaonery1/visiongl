@@ -15,3 +15,4 @@ void TimerStart(void);
 
 char* getTimeElapsed(void);
 char* getTimeElapsedInSeconds();
+char* getTimeElapsedInMilliseconds();

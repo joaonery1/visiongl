@@ -110,3 +110,14 @@ char* getTimeElapsedInSeconds()
 #endif
 	return ret;
 }
+
+char* getTimeElapsedInMilliseconds()
+{
+    char *ret = (char*) malloc(sizeof(char) * 255);
+#ifdef __linux__
+    sprintf(ret, "%.6f ms", TimerElapsed() / 1000.0f);
+#else
+    sprintf(ret, "%.6f ms", TimerElapsed() / 1000.0f);
+#endif
+    return ret;
+}
