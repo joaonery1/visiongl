@@ -427,8 +427,8 @@ demobenchmark:
 	#$(LINUXAMD64_DEMO_BENCHMARK_CV)
 	#$(LINUXAMD64_DEMO_BENCHMARK_CVOCL)
 	#$(LINUXAMD64_DEMO_BENCHMARK_CL)
-	#$(LINUXAMD64_DEMO_BENCHMARK_DEMO)
-	$(LINUXAMD64_DEMO_BENCHMARK_FUNDUS)
+	$(LINUXAMD64_DEMO_BENCHMARK_DEMO)
+	#$(LINUXAMD64_DEMO_BENCHMARK_FUNDUS)
 	#$(LINUXAMD64_DEMO_BENCHMARK_CL3D)
 	#$(LINUXAMD64_DEMO_BENCHMARK_MM)
 	#$(LINUXAMD64_DEMO_BENCHMARK_FUZZYTOPHAT)
@@ -532,8 +532,8 @@ rundemobenchmark:
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CV_NAME) ../images/lena_std.tif 10 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CVOCL_NAME) ../images/lena_std.tif 10 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CL_NAME) ../images/1_good.JPG 1 /tmp
-	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_DEMO_NAME) ../images/1_good.JPG 100 /tmp
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_FUNDUS_NAME) ../images/1_good.JPG 100 /tmp
+	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_DEMO_NAME) ../images/1_good.JPG 100 /tmp
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_FUNDUS_NAME) ../images/1_good.JPG 100 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CL3D_NAME) ../images/dicom/0003.dcm.%d.PGM 0 16 1 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_MM_NAME) ../images/01_test.tif 10 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_FUZZYTOPHAT_NAME) ../images/01_test.tif 10 /tmp

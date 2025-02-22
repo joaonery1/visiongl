@@ -148,7 +148,7 @@ int main(int argc, char* argv[])
         vglClRgb2Gray(img, gray);
     }
     vglClFlush();
-    printf("Time spent on %8d Gray:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d Gray:                %s\n", nSteps, getTimeElapsedInMilliseconds());
  
     vglCheckContext(gray, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_gray.tif");
@@ -166,7 +166,7 @@ int main(int argc, char* argv[])
         vglClConvolution(gray, conv_1x51, (float*)kernelData151, 1, 51);
     }
     vglClFlush();    
-    printf("Time spent on %8d conv_1x51:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d conv_1x51:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     vglCheckContext(conv_1x51, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_conv151.tif");
     cvSaveImage(outFilename, conv_1x51->ipl);
@@ -185,7 +185,7 @@ int main(int argc, char* argv[])
         
     }
     vglClFlush();
-    printf("Time spent on %8d conv_51x1:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d conv_51x1:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     vglCheckContext(conv_51x1, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_conv511.tif");
     cvSaveImage(outFilename, conv_51x1->ipl);
@@ -204,7 +204,7 @@ int main(int argc, char* argv[])
     }
     vglClFlush();
     // printf("Dilate 1x51 done\n");
-    printf("Time spent on %8d dil_1x51:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d dil_1x51:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     vglCheckContext(dil_1x51, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_dil151.tif");
     cvSaveImage(outFilename, dil_1x51->ipl);
@@ -222,7 +222,7 @@ int main(int argc, char* argv[])
         vglClDilate(dil_1x51, dil_51x1, (float*) kernel511, 51, 1);
     }
     vglClFlush();
-    printf("Time spent on %8d dil_51x1:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d dil_51x1:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Dilate 51x1 done\n");
     vglCheckContext(dil_51x1, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_dil511.tif");
@@ -241,7 +241,7 @@ int main(int argc, char* argv[])
         vglClErode(dil_51x1, ero_1x51, (float*) kernel151, 1, 51);
     }
     vglClFlush();
-    printf("Time spent on %8d ero_1x51:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d ero_1x51:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Erode 1x51 done\n");
     vglCheckContext(ero_1x51, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_ero151.tif");
@@ -260,7 +260,7 @@ int main(int argc, char* argv[])
         vglClErode(ero_1x51, ero_51x1, (float*) kernel511, 51, 1);
     }
     vglClFlush();
-    printf("Time spent on %8d ero_51x1:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d ero_51x1:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Erode 51x1 done\n");
     vglCheckContext(ero_51x1, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_ero511.tif");
@@ -279,7 +279,7 @@ int main(int argc, char* argv[])
         vglClSub(ero_51x1, conv_51x1, sub);
     }
     vglClFlush();
-    printf("Time spent on %8d sub:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d sub:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Sub done\n");
     vglCheckContext(sub, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_sub.tif");
@@ -298,7 +298,7 @@ int main(int argc, char* argv[])
         vglClThreshold(sub, thresh, 0.00784);
     }
     vglClFlush();
-    printf("Time spent on %8d thresh:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d thresh:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Threshold done\n");
     vglCheckContext(thresh, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_thresh.tif");
@@ -326,7 +326,7 @@ int main(int argc, char* argv[])
         vglClReconstructionByDilation(erod, buffer, rec, buffer1, (float*) kernelData1717, 17, 17);
     }
     vglClFlush();
-    printf("Time spent on %8d rec:                %s\n", nSteps, getTimeElapsedInSeconds());
+    printf("Time spent on %8d rec:                %s\n", nSteps, getTimeElapsedInMilliseconds());
     // printf("Reconstruct done\n");
     vglCheckContext(rec, VGL_RAM_CONTEXT);
     sprintf(outFilename, "%s%s", outPath, "/out_cl_rec.tif");
