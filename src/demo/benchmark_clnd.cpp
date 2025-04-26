@@ -217,9 +217,9 @@ if (true){
 
   //First call to n-dimensional dilation
   TimerStart();
-  vglClNdDilate(img, out, seCube);
+  vglClNdErode(img, out, seCube);
   vglClFlush();
-  printf("First call to           Dilation nD cube:       %s\n", getTimeElapsedInSeconds());
+  printf("First call to           Erode nD cube:       %s\n", getTimeElapsedInSeconds());
   //Total time spent on n operations n-dimensional dilation
   p = 0;
   TimerStart();
@@ -229,14 +229,14 @@ if (true){
     vglClNdDilate(img, out, seCube);
   }
   vglClFlush();
-  printf("Time spent on %8d  Dilation nD cube:       %s \n", nSteps, getTimeElapsedInSeconds());
+  printf("Time spent on %8d  Erode nD cube:       %s \n", nSteps, getTimeElapsedInSeconds());
 
   vglCheckContext(out, VGL_RAM_CONTEXT);
   if (ndim <= 2)
   {
     vglReshape(out, origVglShape);
   }
-  outFolder = (char*) "clnd_dilate_cube";
+  outFolder = (char*) "clnd_Erode_cube";
   saveResult(out, outString, outPath, outFolder, i_0);
 
 

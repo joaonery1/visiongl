@@ -70,9 +70,9 @@ int main(int argc, char* argv[])
     }
     VglImage* out = vglCreate3dImage(cvSize(img->getWidth(),img->getHeight()), img->depth, img->nChannels, img->getLength(), 0);
 
-    printf("IMAGE CREATED\n");
-    vglPrintImageInfo(img, (char*) "IMG");
-    vglPrintImageInfo(out, (char*) "OUT");
+    // printf("IMAGE CREATED\n");
+    // vglPrintImageInfo(img, (char*) "IMG");
+    // vglPrintImageInfo(out, (char*) "OUT");
 
     //First call to Blur 3x3x3
     TimerStart();
@@ -179,7 +179,7 @@ int main(int argc, char* argv[])
     printf("Time spent on %8d Erode 3x3x3:             %s\n", nSteps, getTimeElapsedInMilliseconds());
 
     vglCheckContext(out, VGL_RAM_CONTEXT);
-    sprintf(outFilename, "%s%s", outPath, "/out_cl3d_erode333_%03d.tif");
+    sprintf(outFilename, "%s%s", outPath, "/out_cl3d_dil333_%03d.tif");
     vglSave3dImage(outFilename, out, imgIFirst, imgILast);
 
     // //First call to Invert

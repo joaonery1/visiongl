@@ -14,13 +14,11 @@ __kernel void vglClNdErode (__global unsigned char* img_input,
                             __constant VglClShape* img_shape,
                             __constant VglClStrEl* window)
 {
-#if __OPENCL_VERSION__ < 200
+
   int coord = (  (get_global_id(2) - get_global_offset(2)) * get_global_size(1) * get_global_size(0)) +
               (  (get_global_id(1) - get_global_offset(1)) * get_global_size (0)  ) +
                  (get_global_id(0) - get_global_offset(0));
-#else
-  int coord = get_global_linear_id();
-#endif
+
 
 
   int ires;
@@ -59,7 +57,7 @@ __kernel void vglClNdErode (__global unsigned char* img_input,
 
         conv_coord += img_shape->offset[d] * win_coord[d];
       }
-      pin = min(pmin, img_input[conv_coord]);
+      pmin = min(pmin, img_input[conv_coord]);
     }
   }
   img_output[coord] = pmin;

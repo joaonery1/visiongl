@@ -538,14 +538,14 @@ rundemobenchmark:
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_MM_NAME) ../images/01_test.tif 10 /tmp
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_FUZZYTOPHAT_NAME) ../images/01_test.tif 10 /tmp
 
-STEPS=100
+STEPS=1
 rundemobenchmarkclnd:
-	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 2048 10752
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 256 86016 -1d
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 256 86016
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 336
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 2 168
-	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 2 24 7
+	cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 2048 10752
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 256 86016 -1d
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 256 86016
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 336
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 2 168
+	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CLND_NAME) ../images/mitosis/mitosis-5d%04d.tif 0 335 $(STEPS) /tmp 0 0 2 24 7
 
 rundemobenchmark16:
 	#cd $(OUTPUT_BINPATH); ./demo_$(BENCHMARK_CV_NAME) ../images/E1154S7I_001.tif $(STEPS) /tmp
